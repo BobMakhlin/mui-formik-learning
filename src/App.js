@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Container, Grid, Typography } from "@mui/material";
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
+
+const INITIAL_FORM_STATE = {};
+
+const FORM_VALIDATION = Yup.object().shape({});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container maxWidth="md">
+      <Formik
+        initialValues={{ ...INITIAL_FORM_STATE }}
+        validationSchema={FORM_VALIDATION}
+        onSubmit={(values) => {
+          console.log("values:", values);
+        }}
+      >
+        <Form>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Typography>Your details</Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography>Address</Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography>Booking information</Typography>
+            </Grid>
+          </Grid>
+        </Form>
+      </Formik>
+    </Container>
   );
 }
 
