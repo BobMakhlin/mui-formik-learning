@@ -13,7 +13,7 @@ const DatePickerWrapper = ({ name, label }) => {
   );
   const markAsTouched = useCallback(() => {
     if (!meta.touched) {
-      setTouched(true, true);
+      setTimeout(() => setTouched(true, true));
     }
   }, [meta.touched, setTouched]);
 
